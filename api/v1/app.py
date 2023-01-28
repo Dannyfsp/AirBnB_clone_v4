@@ -4,13 +4,13 @@ from flask import Flask, Blueprint, jsonify, make_response
 from models import storage
 from api.v1.views import app_views
 from os import getenv
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.register_blueprint(app_views, url_prefix="/api/v1")
-cors = CORS(app, resources={"/*": {"origins": "0.0.0.0"}})
+cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 
 @app.teardown_appcontext
@@ -29,6 +29,9 @@ def notFound(error):
 
 
 if __name__ == "__main__":
-    host = getenv("HBNB_API_HOST", "0.0.0.0")
-    port = getenv("HBNB_API_PORT", "5000")
+    HBNB_API_HOST = getenv('HBNB_API_HOST')
+    HBNB_API_PORT = getenv('HBNB_API_PORT')
+
+    host = '0.0.0.0' if not HBNB_API_HOST else HBNB_API_HOST
+    port = 5000 if not HBNB_API_PORT else HBNB_API_PORT
     app.run(host=host, port=port, threaded=True)
