@@ -1,5 +1,5 @@
 window.addEventListener('load', function () {
-  /* TASK 3 */
+  /* Task 3 */
   $.ajax('http://0.0.0.0:5001/api/v1/status').done(function (data) {
     if (data.status === 'OK') {
       $('#api_status').addClass('available');
@@ -8,7 +8,7 @@ window.addEventListener('load', function () {
     }
   });
 
-  /* TASK 2 */
+  /* Task 2 */
   const amenityIds = {};
   $('input[type=checkbox]').click(function () {
     if ($(this).prop('checked')) {
@@ -23,7 +23,7 @@ window.addEventListener('load', function () {
     }
   });
 
-  /* TASK 4 */
+  /* Task 4 */
   $.ajax({
     type: 'POST',
     url: 'http://0.0.0.0:5001/api/v1/places_search/',
