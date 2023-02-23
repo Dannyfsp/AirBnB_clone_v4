@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 '''Initializing an app instance using Flask'''
+
 from flask import Flask, Blueprint, jsonify, make_response
 from models import storage
 from api.v1.views import app_views
