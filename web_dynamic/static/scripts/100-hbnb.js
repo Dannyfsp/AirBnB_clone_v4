@@ -1,5 +1,5 @@
 window.addEventListener('load', function () {
-  /* TASK 3 */
+  /* Task 3 */
   $.ajax('http://0.0.0.0:5001/api/v1/status').done(function (data) {
     if (data.status === 'OK') {
       $('#api_status').addClass('available');
@@ -8,7 +8,7 @@ window.addEventListener('load', function () {
     }
   });
 
-  /* TASK 2 */
+  /* Task 2 */
   const amenityIds = {};
   $('.amenities input[type=checkbox]').click(function () {
     if ($(this).prop('checked')) {
@@ -26,7 +26,7 @@ window.addEventListener('load', function () {
   const stateIds = {};
   const cityIds = {};
   
-  /* TASK 4 */
+  /* Task 4 */
   $('.filters button').click(function () {
     $.ajax({
       type: 'POST',
@@ -74,7 +74,7 @@ window.addEventListener('load', function () {
     });
   });
 
-  /* TASK 6 */
+  /* Task 6 */
   $('.stateCheckBox').click(function () {
     if ($(this).prop('checked')) {
       stateIds[$(this).attr('data-id')] = $(this).attr('data-name');
